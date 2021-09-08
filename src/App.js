@@ -4,6 +4,7 @@ import PostList from './components/PostList';
 import axios from 'axios';
 import Pagination from './components/Pagination';
 import queryString from 'query-string';
+import PostFilterForm from './components/PostFilterForm';
 
 function App() {
   const [postList, setPostList] = useState([]);
@@ -36,9 +37,18 @@ function App() {
     })
   }
 
+  function handleSearchTermChange(formValues) {
+    setFilters({
+      ...filters,
+      _page: 1,
+      title_like: formValues.searchTerm
+    })
+  }
+
   return (
     <div className="App">
       my app
+      <PostFilterForm onSubmit={handleSearchTermChange} />
       <PostList posts={postList} />
       <Pagination pagination={pagination} onPageChange={handlePageChange} />
     </div>

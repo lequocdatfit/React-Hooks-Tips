@@ -21,7 +21,7 @@ function Pagination(props) {
       </button>
       <span>{_page}</span>
       <button
-        disabled={pagination >= totalPages}
+        disabled={_page >= totalPages}
         onClick={() => handlePageChange(_page + 1)}>
         Next
       </button>
